@@ -1,58 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/pg" href="/Icons/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="/Icons/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <title>Expense Tracker App</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Expense Tracker App</h1>
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
     <div class="input-section">
-        <div class="category-input-div">
-            <label for="category-select">Category:</label>
-            <select id="category-select">
-                <option value="Food & Beverage">Food & Beverage</option>
-                <option value="Rent">Rent</option>
-                <option value="Transport">Transport</option>
-                <option value="Relaxing">Relaxing</option>
-            </select>
-        </div>
-        <div class="amount-input-div">
-            <label for="amount-input">Amount:</label>
-            <input type="number" id="amount-input" placeholder="₹Rupees">
-        </div>
-        <div class="date-input-div">
+      <div class="category-input-div">
+        <label for="category-select">Category:</label>
+        <select id="category-select">
+          <option value="Food & Beverage">Food & Beverage</option>
+          <option value="Rent">Rent</option>
+          <option value="Transport">Transport</option>
+          <option value="Relaxing">Relaxing</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Healthcare">Healthcare</option>
+          <option value="Education">Education</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Travel">Travel</option>
+          <option value="Insurance">Insurance</option>
+          <option value="Savings">Savings</option>
+          <option value="Miscellaneous">Miscellaneous</option>
+        </select>
+      </div>
+      <div class="amount-input-div">
+        <label for="amount-input">Amount:</label>
+        <input type="number" id="amount-input" placeholder="₹Rupees" />
+      </div>
+      <div class="date-input-div">
         <label for="date-input">Date:</label>
-        <input type="date" id="date-input">
-        </div>
-        <button id="add-btn">Add</button>
+        <input type="date" id="date-input" />
+      </div>
+      <button id="add-btn">Add</button>
     </div>
     <div class="expenses-list">
-        <h2>Expenses History</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody id="expense-table-body">
-
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>Total:</td>
-                    <td id="total-amount"></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tfoot>
-        </table>
+      <h2>Expenses History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="expense-table-body"></tbody>
+        <tfoot>
+          <tr>
+            <td>Total:</td>
+            <td id="total-amount"></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-    <script src="/scripts/script.js"></script>
-</body>
+    <script src="/Scripts/script.js"></script>
+    <!-- Replace the existing settings link with this button -->
+    <button class="settings-button" onclick="window.location.href='settings.html'">
+      <i class="fas fa-cog"></i> Settings
+    </button>
+  </body>
 </html>
