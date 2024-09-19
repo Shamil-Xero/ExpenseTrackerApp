@@ -41,7 +41,7 @@
       </div>
       <div class="amount-input-div">
         <label for="amount-input">Amount:</label>
-        <input type="number" id="amount-input" placeholder="₹Rupees" />
+        <input type="number" id="amount-input" placeholder="₹" />
       </div>
       <div class="date-input-div">
         <label for="date-input">Date:</label>
@@ -49,10 +49,6 @@
       </div>
       <button id="add-btn">Add</button>
     </div>
-    <div class="chart-container">
-      <canvas id="expenseChart"></canvas>
-    </div>
-    
     <div class="budget-section">
       <h2>Budget Tracker</h2>
       <div class="budget-input">
@@ -68,6 +64,9 @@
       <div class="budget-progress">
         <div id="budget-bar"></div>
       </div>
+    </div>
+    <div class="chart-container">
+      <canvas id="expenseChart"></canvas>
     </div>
     <div class="expenses-list">
       <h2>Expenses History</h2>
@@ -93,7 +92,7 @@
     </div>
     
     <script src="/Scripts/script.js"></script>
-    <!-- Replace the existing settings link with this button -->
+
     <button
       class="settings-button"
       onclick="window.location.href='settings.html'"

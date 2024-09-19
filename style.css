@@ -29,7 +29,7 @@ body {
 h1,
 h2 {
   color: var(--primary-color);
-  font-family: "Poppins", sans-serif;
+  font-style: normal;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
@@ -333,16 +333,25 @@ body.dark-theme .setting select {
 
 .chart-container {
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   margin: 30px auto;
   background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: var(--shadow);
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+  opacity: 1;
+  max-height: 500px;
+  overflow: hidden;
 }
 
 body.dark-theme .chart-container {
   background-color: #2d3237;
+}
+
+.chart-container[style*="display: none"] {
+  opacity: 0;
+  max-height: 0;
 }
 
 .budget-section {
@@ -358,6 +367,7 @@ body.dark-theme .chart-container {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  /* border-radius: 4px; */
 }
 
 .budget-input input {
@@ -365,6 +375,15 @@ body.dark-theme .chart-container {
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
+}
+
+.budget-input button {
+  padding: 8px 12px;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .budget-display {
@@ -378,13 +397,16 @@ body.dark-theme .chart-container {
   border-radius: 4px;
   height: 20px;
   overflow: hidden;
+  position: relative;
 }
 
 #budget-bar {
-  background-color: var(--primary-color);
   height: 100%;
   width: 0;
   transition: width 0.3s ease;
+  background-image: linear-gradient(to right, #4caf50, #ffd54f, #f44336);
+  background-size: 200% 100%;
+  background-position: left;
 }
 
 body.dark-theme .budget-section {
@@ -395,3 +417,66 @@ body.dark-theme .budget-section {
 body.dark-theme .budget-progress {
   background-color: #4a4a4a;
 }
+
+/* Dark mode styles for the settings page */
+body.dark-theme {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+body.dark-theme .settings-container {
+  background-color: #2d3237;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .settings-section {
+  border-bottom: 1px solid #444;
+}
+
+body.dark-theme .settings-section h2 {
+  color: #ffffff;
+}
+
+body.dark-theme select,
+body.dark-theme input[type="text"],
+body.dark-theme input[type="number"] {
+  background-color: #3a3f44;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+body.dark-theme select:focus,
+body.dark-theme input[type="text"]:focus,
+body.dark-theme input[type="number"]:focus {
+  border-color: #007bff;
+}
+
+body.dark-theme button {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+body.dark-theme button:hover {
+  background-color: #0056b3;
+}
+
+body.dark-theme .currency-option {
+  background-color: #3a3f44;
+  border: 1px solid #555;
+}
+
+body.dark-theme .currency-option.selected {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+body.dark-theme .back-button {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+body.dark-theme .back-button:hover {
+  background-color: #5a6268;
+}
+
+/* Adjust these styles based on your specific layout and design */

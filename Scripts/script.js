@@ -26,6 +26,12 @@ const budgetBar = document.getElementById('budget-bar');
 
 // Add this function to create/update the chart
 function updateChart() {
+  toggleChartVisibility();
+
+  if (expenses.length === 0) {
+    return; // Exit the function if there are no expenses
+  }
+
   const categoryTotals = {};
   let total = 0;
   expenses.forEach(expense => {
@@ -119,11 +125,21 @@ function updateBudgetDisplay() {
   const remaining = Math.max(budget - spent, 0);
   const percentage = (spent / budget) * 100;
 
+  // Update budget display with consistent styling
   budgetAmount.textContent = `${savedCurrency}${budget.toFixed(2)}`;
   spentAmount.textContent = `${savedCurrency}${spent.toFixed(2)}`;
   remainingAmount.textContent = `${savedCurrency}${remaining.toFixed(2)}`;
+
+  // Update the width of the progress bar
   budgetBar.style.width = `${Math.min(percentage, 100)}%`;
-  budgetBar.style.backgroundColor = percentage > 100 ? 'var(--danger-color)' : 'var(--primary-color)';
+  budgetBar.style.backgroundColor = percentage > 100 ? 'red' : 'green'; // Change color based on budget status
+
+  // Add a class if over budget
+  if (percentage > 100) {
+    budgetBar.classList.add('over-budget');
+  } else {
+    budgetBar.classList.remove('over-budget');
+  }
 }
 
 // Add event listener for setting the budget
@@ -198,6 +214,7 @@ addBtn.addEventListener('click', function() {
   deleteCell.appendChild(deleteBtn);
   updateBudgetDisplay();
   updateChart();
+  toggleChartVisibility();
   localStorage.setItem('expenses', JSON.stringify(expenses));
 });
 
@@ -292,6 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
 addBtn.addEventListener('click', function() {
   // ... existing code ...
   updateChart();
+  toggleChartVisibility();
 });
 
 // Call this after deleting an expense
@@ -300,13 +318,84 @@ function createDeleteButton(expense, row) {
   deleteBtn.textContent = 'Delete';
   deleteBtn.classList.add('delete-btn');
   deleteBtn.addEventListener('click', function() {
-    expenses.splice(expenses.indexOf(expense), 1);
+    // Remove the expense from the expenses array
+    expenses = expenses.filter(e => e !== expense);
+    
+    // Update total amount
     totalAmount -= expense.amount;
     totalAmountCell.textContent = `${savedCurrency}${totalAmount.toFixed(2)}`;
+    
+    // Remove the row from the table
     expensesTableBody.removeChild(row);
+    
+    // Update budget display and chart
     updateBudgetDisplay();
     updateChart();
+    toggleChartVisibility();
+    
+    // Save the updated expenses array to localStorage
     localStorage.setItem('expenses', JSON.stringify(expenses));
   });
   return deleteBtn;
+}
+
+if (storedExpenses) {
+  expenses = storedExpenses;
+  totalAmount = expenses.reduce((sum, expense) => sum + expense.amount, 0);
+  totalAmountCell.textContent = `${savedCurrency}${totalAmount.toFixed(2)}`;
+
+  for (const expense of expenses) {
+    const newRow = expensesTableBody.insertRow();
+    const categoryCell = newRow.insertCell();
+    const amountCell = newRow.insertCell();
+    const dateCell = newRow.insertCell();
+    const deleteCell = newRow.insertCell();
+
+    categoryCell.textContent = expense.category;
+    amountCell.textContent = `${savedCurrency}${expense.amount}`;
+    dateCell.textContent = expense.date;
+    deleteCell.appendChild(createDeleteButton(expense, newRow));
+  }
+  updateBudgetDisplay();
+  updateChart();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Load expenses from localStorage
+  const storedExpenses = JSON.parse(localStorage.getItem('expenses')) || [];
+  expenses = storedExpenses;
+
+  // Clear the existing table
+  expensesTableBody.innerHTML = '';
+
+  // Recalculate total amount
+  totalAmount = expenses.reduce((sum, expense) => sum + expense.amount, 0);
+  totalAmountCell.textContent = `${savedCurrency}${totalAmount.toFixed(2)}`;
+
+  // Populate the table with stored expenses
+  for (const expense of expenses) {
+    const newRow = expensesTableBody.insertRow();
+    const categoryCell = newRow.insertCell();
+    const amountCell = newRow.insertCell();
+    const dateCell = newRow.insertCell();
+    const deleteCell = newRow.insertCell();
+
+    categoryCell.textContent = expense.category;
+    amountCell.textContent = `${savedCurrency}${expense.amount}`;
+    dateCell.textContent = expense.date;
+    deleteCell.appendChild(createDeleteButton(expense, newRow));
+  }
+
+  // Update budget display and chart
+  updateBudgetDisplay();
+  updateChart();
+});
+
+function toggleChartVisibility() {
+  const chartContainer = document.querySelector('.chart-container');
+  if (expenses.length === 0) {
+    chartContainer.style.display = 'none';
+  } else {
+    chartContainer.style.display = 'block';
+  }
 }
