@@ -1,0 +1,129 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --light: #f6f6f9;
+  --primary: #1976d2;
+  --dark-primary: #2d3237;
+  --light-primary: #cfe8ff;
+  --grey: #fff;
+  --dark-grey: #aaaaaa;
+  --dark: #363949;
+  --danger: #cfe8ff;
+  --light-danger: #e77c24;
+  --warning: #e3c816;
+  --light-warning: #dce015;
+  --success: #2cbe34;
+  --light-success: #2bc360;
+}
+
+body {
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: var(--dark-primary);
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: aqua;
+  font-family: "Arial Narrow Bold", sans-serif;
+  text-decoration: dotted;
+  text-shadow: #6f2121 2px 2px;
+  text-wrap: pretty;
+}
+
+.input-section {
+  /* display: flex; */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  color: aqua;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 400px){
+  .input-section {
+    display: flex;
+  }
+}
+
+.input-section label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.input-section input[type="number"],
+.input-section input[type="date"] {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.input-section button {
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.input-section button:hover {
+  background-color: rgb(59, 232, 15);
+}
+
+.expenses-list {
+  margin: 20px;
+  color: chartreuse;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 4px solid rgb(3, 38, 135);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.3s ease;
+}
+
+table:hover {
+  border: 4px solid rgb(3, 47, 168);
+  border-color: #007bff;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+}
+
+tfoot td {
+  border-top: 5px solid rgb(3, 47, 168);
+  font-weight: bold;
+}
+
+.delete-btn {
+  padding: 5px 10px;
+  background-color: #c63227;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #ff0400;
+  color: white;
+}
