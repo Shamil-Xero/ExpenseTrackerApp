@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/pg" href="/Icons/favicon.png" />
     <link rel="icon" type="image/x-icon" href="/Icons/favicon.ico" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <title>Expense Tracker App</title>
   </head>
   <body>
@@ -19,7 +24,7 @@
       <div class="category-input-div">
         <label for="category-select">Category:</label>
         <select id="category-select">
-          <option value="Food & Beverage">Food & Beverage</option>
+          <option value="Food">Food</option>
           <option value="Rent">Rent</option>
           <option value="Transport">Transport</option>
           <option value="Relaxing">Relaxing</option>
@@ -44,6 +49,26 @@
       </div>
       <button id="add-btn">Add</button>
     </div>
+    <div class="chart-container">
+      <canvas id="expenseChart"></canvas>
+    </div>
+    
+    <div class="budget-section">
+      <h2>Budget Tracker</h2>
+      <div class="budget-input">
+        <label for="budget-input">Set Monthly Budget:</label>
+        <input type="number" id="budget-input" placeholder="Enter budget amount">
+        <button id="set-budget-btn">Set Budget</button>
+      </div>
+      <div class="budget-display">
+        <p>Budget: <span id="budget-amount">Not set</span></p>
+        <p>Spent: <span id="spent-amount">0</span></p>
+        <p>Remaining: <span id="remaining-amount">0</span></p>
+      </div>
+      <div class="budget-progress">
+        <div id="budget-bar"></div>
+      </div>
+    </div>
     <div class="expenses-list">
       <h2>Expenses History</h2>
       <table>
@@ -66,9 +91,13 @@
         </tfoot>
       </table>
     </div>
+    
     <script src="/Scripts/script.js"></script>
     <!-- Replace the existing settings link with this button -->
-    <button class="settings-button" onclick="window.location.href='settings.html'">
+    <button
+      class="settings-button"
+      onclick="window.location.href='settings.html'"
+    >
       <i class="fas fa-cog"></i> Settings
     </button>
   </body>

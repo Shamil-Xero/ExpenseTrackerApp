@@ -330,3 +330,68 @@ body.dark-theme .setting select {
     border-color: #555;
     color: var(--text-color);
 }
+
+.chart-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 30px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+body.dark-theme .chart-container {
+  background-color: #2d3237;
+}
+
+.budget-section {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.budget-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.budget-input input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.budget-display {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.budget-progress {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  height: 20px;
+  overflow: hidden;
+}
+
+#budget-bar {
+  background-color: var(--primary-color);
+  height: 100%;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+body.dark-theme .budget-section {
+  background-color: #2d3237;
+  color: var(--text-color);
+}
+
+body.dark-theme .budget-progress {
+  background-color: #4a4a4a;
+}
