@@ -38,10 +38,11 @@ h2 {
   text-decoration: dotted;
   text-shadow: #6f2121 2px 2px;
   text-wrap: pretty;
+  margin-bottom: 10px;
 }
 
 .input-section {
-  /* display: flex; */
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -50,11 +51,6 @@ h2 {
   flex-wrap: wrap;
 }
 
-@media only screen and (max-width: 400px){
-  .input-section {
-    display: flex;
-  }
-}
 
 .input-section label {
   font-weight: bold;
@@ -88,14 +84,15 @@ h2 {
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 4px solid rgb(3, 38, 135);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 4px solid var(--dark-primary);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
   transition: border-color 0.3s ease;
 }
 
 table:hover {
-  border: 4px solid rgb(3, 47, 168);
-  border-color: #007bff;
+  width: 100.1%;
+  border: 0px solid var(--dark-grey);
+  border-color: #0a2d51;
 }
 
 th,
@@ -110,7 +107,7 @@ th {
 }
 
 tfoot td {
-  border-top: 5px solid rgb(3, 47, 168);
+  border-top: 5px solid --var(grey);
   font-weight: bold;
 }
 
